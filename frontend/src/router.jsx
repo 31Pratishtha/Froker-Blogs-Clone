@@ -5,6 +5,7 @@ import Main from './components/Main.jsx'
 import Login from './features/Login.jsx'
 import Logout from './features/Logout.jsx'
 import CreateBlog from './features/CreateBlog.jsx'
+import BlogPage from './components/BlogPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
           { path: 'login', element: <Login /> },
           { path: 'logout', element: <Logout /> },
           { path: 'create', element: <CreateBlog /> },
+          { path: 'blog/:id', element: <BlogPage /> },
         ],
       },
     ],

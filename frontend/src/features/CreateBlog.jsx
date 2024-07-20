@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import React, { useState, useRef, useEffect } from 'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
@@ -8,7 +9,7 @@ const modules = {
 		[{ header: [1, 2, 3, 4, 5, 6, false] }],
 		['bold', 'italic', 'underline', 'strike', 'blockquote'],
 		[{ list: 'ordered' }, { list: 'bullet' }],
-		['link', 'image'],
+		['link', 'cover'],
 		['clean'],
 	],
 }
@@ -23,22 +24,24 @@ const formats = [
 	'bullet',
 	'indent',
 	'link',
-	'image',
+	'cover',
 	'blockquote',
 ]
 
 export default function CreateBlog() {
 	const [title, setTitle] = useState('')
 	const [content, setContent] = useState('')
-	const [image, setImage] = useState('')
+	const [cover, setCover] = useState('')
 	const [author, setAuthor] = useState('')
+	// const [redirect, setRedirect] = useState(false)
+	const navigate = useNavigate()
 	const quillRef = useRef(null)
 
 	const onTitleChanged = (e) => {
 		setTitle(e.target.value)
 	}
-	const onImageUpload = (e) => {
-		setImage(e.target.files)
+	const onCoverUpload = (e) => {
+		setCover(e.target.files)
 	}
 	const onContentChanged = (val) => {
 		setContent(val)
@@ -47,30 +50,32 @@ export default function CreateBlog() {
 		setAuthor(e.target.value)
 	}
 
-	useEffect(() => {
-		console.log()
-	}, [])
-
 	//Send create-blog request to server
 	const createNewBlog = async (e) => {
 		e.preventDefault()
-		console.log(image)
+		console.log(cover)
 
 		//create form data
 		const formData = new FormData()
 		formData.set('title', title)
 		formData.set('content', content)
-		formData.set('image', image[0])
+		formData.set('author', author)
+		formData.set('cover', cover[0])
 
 		console.log(formData)
 
-		await axios.post('http://localhost:3000/create', formData, {
+		const response = await axios.post('http://localhost:3500/blogs', formData, {
 			headers: {
 				'Content-Type': 'multipart/form-data',
 			},
 		})
-	}
 
+		//redirect if blog created successfully
+		if (response.status === 200 || response.status === 201) {
+			navigate('/blogs')
+		}
+	}
+	
 	return (
 		<>
 			<form action="" onSubmit={createNewBlog}>
@@ -83,7 +88,7 @@ export default function CreateBlog() {
 				/>
 
 				<label htmlFor="cover">Upload an image: </label>
-				<input id="cover" type="file" onChange={onImageUpload} />
+				<input id="cover" type="file" name="cover" onChange={onCoverUpload} />
 
 				<label htmlFor="author">Author: </label>
 				<input
