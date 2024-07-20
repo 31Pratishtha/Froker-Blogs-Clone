@@ -1,6 +1,12 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 export default function Main() {
-  return <Outlet />;
+	return (
+		<>
+			<div className='mx-24 flex-1'>
+				<Outlet />
+			</div>
+		</>
+	)
 }

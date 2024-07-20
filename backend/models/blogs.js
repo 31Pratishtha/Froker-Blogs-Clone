@@ -7,6 +7,7 @@ const blogSchema = new Schema(
 		content: String,
 		cover: String,
 		author: String,
+		likes: {type: Number, default: 0},
 		createdAt: {
 			type: Date,
 			default: Date.now,

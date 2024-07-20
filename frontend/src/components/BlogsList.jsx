@@ -32,18 +32,23 @@ export default function BlogsList() {
 
 	return (
 		<>
-			<div>
-				<h2>
-					<span>FROKER</span> <span>BLOG</span>
+			<div className="pt-16">
+				<h2 className="flex justify-center items-center text-3xl gap-4">
+					<span className="text-frk-orange">FROKER</span>{' '}
+					<span className="text-frk-gray">BLOG</span>
 				</h2>
-				<h1>Articles covering the most recent updates and advancements</h1>
-				<h1>Recent Posts</h1>
-				{blogs.length > 0 &&
-					blogs.map((blog) => (
-						<div key={blog._id}>
-							<BlogCard blog={blog} />
-						</div>
-					))}
+				<h1 className="flex text-frk-gray justify-center items-center text-4xl leading-relaxed tracking-normal font-semibold text-center px-8 pt-6">
+					Articles covering the most recent updates and advancements
+				</h1>
+				<h1 className='text-frk-gray text-3xl py-12'>Recent Posts</h1>
+				<div className="relative grid grid-cols-3 grid-rows-2 mb-10">
+					{blogs.length > 0 &&
+						blogs.map((blog) => (
+							<div key={blog._id}>
+								<BlogCard blog={blog} />
+							</div>
+						))}
+				</div>
 			</div>
 		</>
 	)

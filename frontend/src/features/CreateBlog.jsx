@@ -78,7 +78,7 @@ export default function CreateBlog() {
 	
 	return (
 		<>
-			<form action="" onSubmit={createNewBlog}>
+			<form action="" onSubmit={createNewBlog} className='flex flex-col h-4/5 my-7 '>
 				<label htmlFor="title">Title: </label>
 				<input
 					type="text"
@@ -98,16 +98,17 @@ export default function CreateBlog() {
 					onChange={onAuthorChanged}
 				/>
 
-				<div className="p-3">
+				<div className="mb-14">
 					<ReactQuill
 						modules={modules}
 						formats={formats}
 						onChange={onContentChanged}
 						ref={quillRef}
+						className='h-52'
 					/>
 				</div>
 
-				<button>Create Blog</button>
+				<button className='bg-frk-orange py-3 w-1/4 flex justify-center items-center'>Create Blog</button>
 			</form>
 		</>
 	)

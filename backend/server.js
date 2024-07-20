@@ -24,10 +24,30 @@ app.use(cors(corsOptions))
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 app.use('/blogs', blogsRoute)
 
+//get one blog
 app.get('/blog/:id', async (req, res) => {
-	const {id} = req.params;
+	const { id } = req.params
 	const blogDoc = await Blog.findById(id)
 	res.json(blogDoc)
+})
+
+//Update likes
+app.patch('/blog/:id/likes', async (req, res) => {
+	const { id } = req.params
+	const { increment } = req.body
+
+	const blog = await Blog.findByIdAndUpdate(
+		id,
+		{ $inc: { likes: increment ? 1 : -1 } },
+		{ new: true }
+	)
+
+	if (!blog) {
+		res.status(404)
+		throw new Error('Blog not found')
+	}
+
+	res.json({ likes: blog.likes })
 })
 
 //establish connnection to mongoDB
