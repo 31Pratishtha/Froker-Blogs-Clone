@@ -28,6 +28,17 @@
    ![alt text](https://github.com/31Pratishtha/Froker-Blogs-Clone/blob/main/sample2.png)
    ![alt text](https://github.com/31Pratishtha/Froker-Blogs-Clone/blob/main/sample3.png)
    ![alt text](https://github.com/31Pratishtha/Froker-Blogs-Clone/blob/main/sample4.png)
+
+
+# Sample screenshot of the login page
+   ![alt text](https://github.com/31Pratishtha/Froker-Blogs-Clone/blob/main/sample5.png)
+
+
+# Sample screenshots of the 'create new blog' page
+   ![alt text](https://github.com/31Pratishtha/Froker-Blogs-Clone/blob/main/sample6.png)
+
+
+
    
 
    
