@@ -14,7 +14,7 @@ export default function Login() {
   return (
     <div>
       <form action="" onSubmit={Login}>
-        <button>Login as Admin</button>
+        <button className="bg-frk-orange p-6">Login as Admin</button>
       </form>
     </div>
   );

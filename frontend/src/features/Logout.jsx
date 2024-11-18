@@ -14,7 +14,7 @@ export default function Logout() {
   return (
     <div>
       <form action="" onSubmit={Logout}>
-        <button>Logout</button>
+        <button className="bg-frk-orange p-6">Logout</button>
       </form>
     </div>
   );

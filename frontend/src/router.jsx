@@ -6,6 +6,7 @@ import Login from './features/Login.jsx'
 import Logout from './features/Logout.jsx'
 import CreateBlog from './features/CreateBlog.jsx'
 import BlogPage from './components/BlogPage.jsx'
+import Test from './components/Test.jsx'
 
 const router = createBrowserRouter([
   {
